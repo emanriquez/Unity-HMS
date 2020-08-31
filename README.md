@@ -2,8 +2,7 @@
 
 REFERENCE : https://github.com/EvilMindDevs/hms-unity-plugin
 
-
-The HMS Unity plugin helps you integrate all the power of Huawei Mobile Services in your Unity game:
+HMS pluging para Mobile Service en Unity
 
 * Huawei Account Kit
 * In App purchases: Consumable and non consumables.
@@ -11,89 +10,80 @@ The HMS Unity plugin helps you integrate all the power of Huawei Mobile Services
 * Push notifications
 * Game leaderboards and achievements
 
-## Requirements
+## Requeriminentos necesarios para proyecto
 Android SDK min 21
 Net 4.x
 
-## Important
-This plugin supports:
-* Unity version 2019 - Developed in Master Branch
-* Unity version 2018 - Developed in 2018 Branch
+## Importante
+soportado para 
+Unity version 2019
+
+## conecta hms en unity en 5 pasos
+
+1. Registrate como developer en Huawei
+2. Importar el proyecto ejemplo 
+3. Configura el manifiesto
+4. Conecta tu juego a HMS
+5. Utiliza los prefab para integrar HMS
+
+### 1 - Registrar en developer Huawei
+
+#### 1.1-  Registrate en [Huawei Developer](https://developer.huawei.com/consumer/en/)
+
+#### 1.2 - Crea tu app en AppGallery Connect.
+Recuerda que app tiene un nombre de APP Build ID, este es muy importante para generar llaves y APK
 
 
-## Status
-This is an ongoing project, currently WIP. Feel free to contact us if you'd like to collaborate and use Github issues for any problems you might encounter. We'd try to answer in no more than a working day.
+1. Iniciar sesión y presiona **Console**.
+2. Click en HUAWEI AppGallery 
+3. En **AppGallery Connect** , click **My apps**.
+4. EN **My apps**, click **New**.
+5. Ingresa el nmbre, selecciona categoria y el lenguaje
+6. Busca tu App ID and CPID asignado en tu AppGallery
 
-### Expected soon features
-* Analytics integration
+#### 1.3 agregar Package Name
+Configuramos el APK NAME
 
-## Connect your game Huawei Mobile Services in 5 easy steps
-
-1. Register your app at Huawei Developer
-2. Import the Plugin to your Unity project
-3. Configure your manifest
-4. Connect your game with the HMS Managers
-5. Connect the HMS Callbacks with your game
-
-### 1 - Register your app at Huawei Developer
-
-#### 1.1-  Register at [Huawei Developer](https://developer.huawei.com/consumer/en/)
-
-#### 1.2 - Create an app in AppGallery Connect.
-During this step, you will create an app in AppGallery Connect (AGC) of HUAWEI Developer. When creating the app, you will need to enter the app name, app category, default language, and signing certificate fingerprint. After the app has been created, you will be able to obtain the basic configurations for the app, for example, the app ID and the CPID.
-
-1. Sign in to Huawei Developer and click **Console**.
-2. Click the HUAWEI AppGallery card and access AppGallery Connect.
-3. On the **AppGallery Connect** page, click **My apps**.
-4. On the displayed **My apps** page, click **New**.
-5. Enter the App name, select App category (Game), and select Default language as needed.
-6. Upon successful app creation, the App information page will automatically display. There you can find the App ID and CPID that are assigned by the system to your app.
-
-#### 1.3 Add Package Name
-Set the package name of the created application on the AGC.
-
-1. Open the previously created application in AGC application management and select the **Develop TAB** to pop up an entry to manually enter the package name and select **manually enter the package name**.
-2. Fill in the application package name in the input box and click save.
-
-> Your package name should end in .huawei in order to release in App Gallery
-
-#### Generate a keystore.
-
-Create a keystore using Unity or Android Tools. make sure your Unity project uses this keystore under the **Build Settings>PlayerSettings>Publishing settings**
+1.**Develop TAB**  ingresa el nombre de tu app manualmente **manually enter the package name**.
+2. Una vez ingresado guarda tu nombre de Apk
 
 
-#### Generate a signing certificate fingerprint.
+#### Genera a keystore.
+Crea tu llave en unity para publicar proyecto en **Build Settings>PlayerSettings>Publishing settings**
 
-During this step, you will need to export the SHA-256 fingerprint by using keytool provided by the JDK and signature file.
 
-1. Open the command window or terminal and access the bin directory where the JDK is installed.
-2. Run the keytool command in the bin directory to view the signature file and run the command.
+#### Generar signing certificate fingerprint.
+
+HMS te pide ver desde tu llave creada su registro en SH-256, para esto vamos a revisar esta llave para copiar parametros y llevar a app conect.
+
+1. Abre el terminal de tu computadora, recuerda debes tener JDK instalado.
+2. Corre el siguiente comando, (la ruta final es donde guardaste tu llave desde unity)
 
     ``keytool -list -v -keystore C:\app\juegodemo.keystore``
     
- ALTERNATIVE :    
+ Mi tienes error por lenguaje te recomiendo usar este comando :    
     ``keytool -J-Duser.language=en -list -v -keystore c:\app\juegodemo.keystore``
     
     
-3. Enter the password of the signature file keystore in the information area. The password is the password used to generate the signature file.
-4. Obtain the SHA-256 fingerprint from the result. Save for next step.
+3. Ingresa la contraseña de tu llave creada en unity
+4. Buscar el registro SHA-256 y copialo
 
 
-#### Add fingerprint certificate to AppGallery Connect
-During this step, you will configure the generated SHA-256 fingerprint in AppGallery Connect.
+#### Agregar fingerprint certificate to AppGallery Connect
 
-1. In AppGallery Connect, click the app that you have created and go to **Develop> Overview**
-2. Go to the App information section and enter the SHA-256 fingerprint that you generated earlier.
-3. Click √ to save the fingerprint.
+
+1. En AppGallery Connect, click en  **Develop> Overview**
+2. Vamos a  App information section and ingresar el SHA-256 fingerprint ya copiado anteriormente
+3. Click √ en Guardar la fingerprint.
 
 ____
 
-### 2 - Import the plugin to your Unity Project
+### 2 - Import  plugin  Unity Project
 
-To import the plugin:
+import plugin:
 
-1. Download the [.unitypackage](https://github.com/EvilMindDevs/hms-unity-plugin/releases)
-2. Open your game in Unity
+1. Descarga de [.unitypackage](https://github.com/EvilMindDevs/hms-unity-plugin/releases)
+2. Abre tu juego
 3. Choose Assets> Import Package> Custom
 ![Import Package](http://evil-mind.com/huawei/images/importCustomPackage.png "Import package")
 4. In the file explorer select the downloaded HMS Unity plugin. The Import Unity Package dialog box will appear, with all the items in the package pre-checked, ready to install.
@@ -101,12 +91,11 @@ To import the plugin:
 5. Select Import and Unity will deploy the Unity plugin into your Assets Folder
 ____
 
-### 3 - Configure your Manifest
+### 3 - Configurar el Manifest
 
-In order for the plugin to work you need to add some information to your Android's Manifest. Make sure you have this information before proceeding.
-
-* App ID. The app's unique ID.
-* CPID. The developer's unique ID.
+Necesitamos 
+* App ID. The app's unique ID. (Buscalo en portal Developer)
+* CPID. The developer's unique ID. (Buscalo en portal de Developer en IAP)
 * Package Name
 
 Get all this info from [Huawei Developer](https://developer.huawei.com/consumer/en/). Open the developers console go to My Services > HUAWEI IAP, and click on your apps name to enter the Detail page.
@@ -114,19 +103,22 @@ Get all this info from [Huawei Developer](https://developer.huawei.com/consumer/
 ![Detail page](http://evil-mind.com/huawei/images/appInfo.png "Detail page")
 ____
 
-#### How to configure the Manifest
+#### Como debe quedar el manifest
 
 1. Open Unity and choose **Huawei> App Gallery> Configure** The manifest configuration dialog will appear.
 
     ![Editor Tool](http://evil-mind.com/huawei/images/unityMenu.png "Editor tool")
 
 2. Fill out the fields: AppID, CPID and package name.
-3. Click Configure Manifest
-    The plugin will include all the necessary information inside the Android Manifest
-    * Permissions
-    * Meta Data
-    * Providers
-And your manifest should look now like these:
+3. La configuración permitida
+    
+    * Agregar los Permisos
+    * Meta Datos
+    * Provedores
+
+Recueda que debes crearlo en Assent/Plugins/Android/AndroidManifest.xml
+
+Ejemplo:
 
 ``` xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -156,22 +148,18 @@ And your manifest should look now like these:
     </manifest>
 ```
 ____
-### 4 Connect your game with any HMS Manager
+### 4 Conectar Pluging
 
-In order for the plugin to work, you need to deploy the needed HMS Manager prefab inside your scene.
+Solo deberas arrestrar los Prefab ya creados a tu escenario de Unity, adicional podrás hacer otros script si fuera necesario.
 
-1. In Unity's project view, locate the plugins prefab folder
-2. Drag and drop the HMS Manager to your scene
 
-Now you need your game to call the HMS Manager from your game. You can do this by code or as a UI event. See below for further instructions.
-    
-#### Call the HMS by code
+#### Llamada de codigos
 
 USE DEMO GIT C# UNITY
 
 
 ##### Account Kit (Scene login)
-Call login method in order to open the login using prefab AccountManager
+Ejemplo de Login por HMS con account kit
 ```csharp
  private AccountManager accountManager;
 
@@ -229,7 +217,7 @@ Call login method in order to open the login using prefab AccountManager
 
 
 ## Kits Specification
-Find below the specific information on the included functionalities in this plugin
+Otras funciones dentro de Pluging
 
 1. Account
 2. In App Purchases
