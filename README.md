@@ -41,11 +41,16 @@ Recuerda que app tiene un nombre de APP Build ID, este es muy importante para ge
 5. Ingresa el nmbre, selecciona categoria y el lenguaje
 6. Busca tu App ID and CPID asignado en tu AppGallery
 
+
+
+
 #### 1.3 agregar Package Name
 Configuramos el APK NAME
 
 1.**Develop TAB**  ingresa el nombre de tu app manualmente **manually enter the package name**.
 2. Una vez ingresado guarda tu nombre de Apk
+3. Activa los SDK de HMS que usaras y descarga JSON en **Assets/Huawei/**
+
 
 
 #### Genera a keystore.
