@@ -167,51 +167,66 @@ Now you need your game to call the HMS Manager from your game. You can do this b
     
 #### Call the HMS by code
 
-First, get the reference to the HMSManager
+USE DEMO GIT C# UNITY
 
+
+##### Account Kit (Scene login)
+Call login method in order to open the login using prefab AccountManager
 ```csharp
-private HMSManager hmsManager =  GameObject.Find("HMSManager").GetComponent<HMSManager>();
+ private AccountManager accountManager;
+
+
+
+    public Text usuario;
+
+
+    UnityEvent loadedEvent;
+
+
+    void Awake()
+    {
+        Debug.Log("[HMS LOGIN]: USE LOGIN manager Init");
+
+
+    }
+
+    // Start is called before the first frame update
+        void Start()
+    {
+        Debug.Log("[HMS]: Started");
+
+
+        if (PlayerPrefs.GetInt("Monedas").ToString() == "") { PlayerPrefs.SetInt("Monedas", 0); }
+
+        accountManager = GetComponent<AccountManager>();
+        Debug.Log(accountManager.ToString());
+        accountManager.OnSignInFailed = (error) =>
+        {
+            Debug.Log($"[HMSPlugin]: SignIn failed. {error.Message}");
+        };
+        accountManager.OnSignInSuccess = SignedIn;
+
+    }
+    // button action
+    public void loginhms() {
+        accountManager.SignIn();
+    }
+    private void SignedIn(AuthHuaweiId authHuaweiId)
+    {
+        string username = string.Format(authHuaweiId.DisplayName); 
+
+        PlayerPrefs.SetString("username", username);
+       
+
+
+        Debug.Log("[HMS]: SignedIn");
+        SceneManager.LoadScene("Home");
+    }
+
+
+   
 ```
-##### Account Kit (login)
-Call login method in order to open the login dialog
-```csharp
-hmsManager.Login();
-```
 
-##### In App Purchases
-You can retrieve a products information from App Gallery:
-* Name
-* Description
-* Price
-
-``` csharp
-GetProductDetail(string productID);
-```
-
-Open the Purchase dialog by calling to BuyProduct method
-```csharp
-BuyProduct(string productID)
-```
-
-#### Call the HMS from your UI
-
-1. Select you button and open the inspector
-2. Find the On Click () section and drag and drop the HMS Manager object to the object selector
-![On Click Event configuration](http://evil-mind.com/huawei/images/onClick.png "On Click Event configuration")
-3. Select the method you want to call from the dropdown list:
-    * Login
-    * BuyProduct
-    * GetProductDetail
-    * GetPurchaseInfo
-    * CheckForUpdates
-
-If you are not sure how to do this, search the demo folder and open the sample scene.
-
-![Sample store](http://evil-mind.com/huawei/images/demo.jpg "Sample store")
-____
-
-### 5 Connect the HMS Callbacks with you game
-In order to receive the callback information from Huawei Mobile Services, you need to set the callbacks that will control the information retrieved from Huawei Servers.
 
 ## Kits Specification
 Find below the specific information on the included functionalities in this plugin
@@ -225,7 +240,6 @@ Find below the specific information on the included functionalities in this plug
 ### Account
 
 Official Documentation on Account Kit: [ Documentation](https://developer.huawei.com/consumer/en/doc/development/HMS-Guides/account-introduction-v4)
-
 
 ### In App Purchases
 
