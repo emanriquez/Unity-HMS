@@ -78,7 +78,7 @@ HMS te pide ver desde tu llave creada su registro en SH-256, para esto vamos a r
 
 ____
 
-### 2 - Import  plugin  Unity Project
+### 2 - Importar  plugin  Unity Project
 
 import plugin:
 
@@ -89,7 +89,11 @@ import plugin:
 4. In the file explorer select the downloaded HMS Unity plugin. The Import Unity Package dialog box will appear, with all the items in the package pre-checked, ready to install.
 ![Import Dialog](http://evil-mind.com/huawei/images/unityImport.png "Import dialog")
 5. Select Import and Unity will deploy the Unity plugin into your Assets Folder
+
+*** te recomiendo actualizar DLL desde carpeta compartida de este GIT ya que tiene cambios nuevos****
 ____
+
+
 
 ### 3 - Configurar el Manifest
 
