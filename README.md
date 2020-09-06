@@ -1,6 +1,7 @@
 # Huawei Mobile Services Plugin
 
 REFERENCE : https://github.com/EvilMindDevs/hms-unity-plugin
+CODIGO EJEMPLO GAME: http://www.mediafire.com/file/z83hexbmp5txka4/Unity_Projects.rar/file
 
 HMS pluging para Mobile Service en Unity
 
@@ -125,7 +126,7 @@ ____
     * Meta Datos
     * Provedores
 
-Recueda que debes crearlo en Assent/Plugins/Android/AndroidManifest.xml
+Recuerda que debes crearlo en Assent/Plugins/Android/AndroidManifest.xml
 
 Ejemplo:
 
